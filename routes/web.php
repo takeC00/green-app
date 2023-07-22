@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Middleware\HelloMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,14 @@ Route::get('/', function () {
 
 //Route::get('/hello', [HelloController::class, 'index']);
 
-//名前つきルート
-Route::get('/hello', [HelloController::class, 'index'])->name('hello');
-Route::get('hello/other', [HelloController::class, 'other']);
+////名前つきルート
+//Route::get('/hello', [HelloController::class, 'index'])->name('hello');
+//Route::get('hello/other', [HelloController::class, 'other']);
 
-//パラメータ設定
-Route::get('/hello/{id}', [HelloController::class, 'index'])->where('id', '[0-9]+');
+////パラメータ設定
+//Route::get('/hello/{id}', [HelloController::class, 'index'])->where('id', '[0-9]+');
+
+Route::middleware([HelloMiddleware::class])->group(function () {
+    Route::get('/hello', [HelloController::class, 'index']);
+    Route::get('hello/other', [HelloController::class, 'other']);
+});
