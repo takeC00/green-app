@@ -21,6 +21,8 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [HelloController::class, 'index']);
+Route::get('/hello/other', [HelloController::class, 'other']);
+Route::get('/sample', [SampleController::class, 'index'])->name('sample');
 
 ////名前つきルート
 //Route::get('/hello', [HelloController::class, 'index'])->name('hello');
