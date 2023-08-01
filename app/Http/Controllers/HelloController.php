@@ -12,18 +12,17 @@ class HelloController extends Controller
 
     function __construct()
     {
-        $this->fname = 'sample.txt';
+        $this->fname = 'hello.txt';
     }
 
     public function index()
     {
-        $sample_msg = $this->fname;
-        $sample_data = Storage::get($this->fname);
-        $sample_data = explode(PHP_EOL, $sample_data);
-        unset($sample_data[1]);
+        $sample_msg = Storage::disk('public')->url($this->fname);
+        $sample_data = Storage::disk('public')->get($this->fname);
+
         $data = [
             'msg' => $sample_msg,
-            'data' => $sample_data
+            'data' => explode(PHP_EOL, $sample_data)
         ];
 
         return view('hello.index', $data);
@@ -31,8 +30,7 @@ class HelloController extends Controller
 
     public function other($msg)
     {
-        $data = Storage::get($this->fname) . PHP_EOL . $msg;
-        Storage::put($this->fname, $data);
+        Storage::disk('public')->prepend($this->fname, $msg);
         return redirect()->route('hello');
     }
 }
