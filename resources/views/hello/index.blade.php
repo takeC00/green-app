@@ -15,4 +15,6 @@
         <li>{{$item}}</li>
         @endforeach
     </ul>
+
+    <p><a href="/hello/other">ダウンロード</a></p>
 </body>
