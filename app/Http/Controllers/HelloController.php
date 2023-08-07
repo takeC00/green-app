@@ -22,12 +22,12 @@ class HelloController extends Controller
         $values = [];
         if($request->isMethod('post'))
         {
-            $form = $request->all();
+            $form = $request->only(['name', 'mail']);
             $keys = array_keys($form);
             $values = array_values($form);
         }
         $data = [
-            'msg' => $msg,
+            'msg' =>'you inputted',
             'keys' => $keys,
             'values' => $values,
         ];
