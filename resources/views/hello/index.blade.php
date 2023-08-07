@@ -10,17 +10,9 @@
 <body>
     <h1>Hello</h1>
     <p>{{$msg}}</p>
-    <ul>
-        @foreach($data as $item)
-        <li>{{$item}}</li>
-        @endforeach
-    </ul>
-
-    <p><a href="/hello/other">ダウンロード</a></p>
-
-    <form action="/hello/other" method="post" enctype="multipart/form-data">
+    <form action="/hello" method="post">
         @csrf
-        <input type="file" name="file">
+        <input type="text" name="msg">
         <input type="submit">
     </form>
 </body>
