@@ -56,6 +56,19 @@ return [
             'throw' => false,
         ],
 
+        'logs' => [
+            'driver' => 'local',
+            'root' => storage_path('logs'),
+            'url' => env('APP') . '/storage/logs',
+        ],
+
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => 'ホスト名',
+            'username' => '利用者名',
+            'password' => 'パスワード',
+        ]
+
     ],
 
     /*
