@@ -32,4 +32,17 @@ class HelloController extends Controller
         $request->flash();
         return view('hello.index', $data);
     }
+
+    public function other()
+    {
+        $data = [
+            'name' => 'Taro',
+            'mail' => 'taro@yamada',
+            'tel' => '090-0000-0000'
+        ];
+
+        $query_str = http_build_query($data);
+        $data['msg'] = $query_str;
+        return redirect()->route('hello', $data);
+    }
 }
