@@ -10,11 +10,9 @@ use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
 {
-    private $fname;
-
-    function __construct()
+    function __construct(MyService $myservice)
     {
-        $this->fname = 'hello.txt';
+        $myservice = app('App\MyClasses\MyService');
     }
 
     public function index(Myservice $myservice, int $id = -1)
