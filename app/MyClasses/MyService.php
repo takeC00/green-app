@@ -9,10 +9,15 @@ class MyService
 
     public function __construct(int $id = -1)
     {
-        if($id >= 0)
+
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        if($id >= 0 && $id < count($this->data))
         {
-            $this->id = $id;
-            $this->msg = 'select: '.$this->data[$id];
+            $this->msg = "select id:" . $id . ', data:"' .  $this->data[$id] . '"';
         }
     }
 

@@ -17,9 +17,9 @@ class HelloController extends Controller
         $this->fname = 'hello.txt';
     }
 
-    public function index(int $id = -1)
+    public function index(Myservice $myservice, int $id = -1)
     {
-        $myservice = app()->makeWith('App\MyClasses\MyService', ['id' => $id]);
+        $myservice->setId($id);
         $data = [
             'msg' => $myservice->say(),
             'data' => $myservice->alldata()
