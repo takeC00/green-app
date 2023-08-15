@@ -20,6 +20,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        app()->bind('App\MyClasses\MyServiceInterface', 'App\MyClasses\PowerMyService');
     }
 }
