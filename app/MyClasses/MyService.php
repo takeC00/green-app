@@ -1,14 +1,14 @@
 <?php
 namespace App\MyClasses;
 
-class MyService
+class MyService implements MyServiceInterface
 {
     private $serial;
     private $id = -1;
     private $msg = 'no id ...';
     private $data = ['hello', 'welcome', 'Bye'];
 
-    public function __construct(int $id = -1)
+    public function __construct()
     {
         $this->serial = rand();
         echo "「" . $this->serial . "」";

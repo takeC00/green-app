@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use App\MyClasses\MyService;
+use App\MyClasses\MyServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
 {
-    function __construct(MyService $myservice)
+    function __construct()
     {
-        $myservice = app('App\MyClasses\MyService');
+
     }
 
-    public function index(Myservice $myservice, int $id = -1)
+    public function index(MyServiceInterface $myservice, int $id = -1)
     {
         $myservice->setId($id);
         $data = [
