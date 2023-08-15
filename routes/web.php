@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', [HelloController::class, 'index'])->name('hello');
-Route::get('/hello/{id}', [HelloController::class, 'index']);
+Route::get('/hello', [HelloController::class, 'index'])->name('hello')->middleware(App\Http\Middleware\MyMiddleware::class);
+Route::get('/hello/{id}', [HelloController::class, 'index'])->middleware(App\Http\Middleware\MyMiddleware::class);
 Route::post('/hello', [HelloController::class, 'index'])->name('hello');
 Route::get('hello/{msg}', [HelloController::class, 'other']);
 Route::get('/hello/other', [HelloController::class, 'other']);
