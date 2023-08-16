@@ -10,9 +10,12 @@
 <body>
     <h1>Hello</h1>
     <p>{{$msg}}</p>
-    <ul>
+    <ol>
         @foreach($data as $item)
-        <li>{!!$item!!}</li>
+        <li>
+            {{$item->name}}
+            [{{$item->email}}]
+        </li>
         @endforeach
-    </ul>
+    </ol>
 </body>
