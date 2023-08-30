@@ -13,7 +13,12 @@ class HelloController extends Controller
         if($id >= 0)
         {
             $msg = 'get name like"'.$id.'".';
-            $result = DB::table('people')->where('name','like','%'.$id.'%')->get();
+
+            //$result = DB::table('people')->where('name','like','%'.$id.'%')->get();
+
+            //whereRaw
+            //SQLクエリーをパラメータで送られてきた$idと繋ぎ合わせてるので$idが不正な値でないかをチェックする必要がある
+            $result = DB::table('people')->whereRaw('name like "%'.$id.'%"')->get();
         }
         else
         {
