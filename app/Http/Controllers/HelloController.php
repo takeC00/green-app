@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class HelloController extends Controller
 {
-    public function index()
+    public function index($id = -1)
     {
-            $msg = 'get name people records';
+            $msg = 'get people records where id = "'.$id.'" ';
 
             //$result = DB::table('people')->where('name','like','%'.$id.'%')->get();
 
@@ -23,15 +23,19 @@ class HelloController extends Controller
             //$result = DB::table('people')->whereRaw('name like ?', ['%'.$id.'%'])->get();
 
             //最初のレコード
-            $first = DB::table('people')->first();
+            //$first = DB::table('people')->first();
             //最後のレコード
-            $last = DB::table('people')->orderBy('id', 'desc')->first();
-            $result = [$first, $last];
+            //$last = DB::table('people')->orderBy('id', 'desc')->first();
+            //$result = [$first, $last];
+
+            //idで検索
+            $find = [DB::table('people')->find($id)];
+            //dd($find);
 
 
         $data = [
             'msg' => $msg,
-            'data' => $result,
+            'data' => $find,
         ];
         return view('hello.index', $data);
     }
